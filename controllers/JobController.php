@@ -28,13 +28,10 @@ class JobController extends Controller
 
 	public function addJob(Request $request, Response $response)
 	{
-		// if ($this->user->role = 3) {
-		// 	return $response->redirect('/jobs');
-		// }
-
 		$job = new Job();
 		if ($request->isPost()){
 			$job->loadData($request->getBody());
+			$job->loadData(['createdBy' =>  Application::$app->session->get('auth')]);
 			if($job->validate() && $job->save()){
 				$response->redirect('/jobs');
 			}
@@ -48,13 +45,22 @@ class JobController extends Controller
 	{
 
 		$jobs = DBModel::all('job');
-		return $this->render('list_jobs', ['jobs' => $jobs, 'user' => $this->user]);
+		$primary_key = Application::$app->session->get('auth');
+		$applyed = array_map(fn($aply) => $aply['job'], DBModel::list(['instructor' => $primary_key], 'applyed_job'));
+
+
+		return $this->render('list_jobs', ['jobs' => $jobs, 'user' => $this->user, 'applyed' => $applyed]);
+
+
 	}
 
 	public function jobDetail(Request $request, Response $response)
 	{
 		$primary_key = $_GET['id'];
 		$job = DBModel::findOne(['id' => $primary_key], 'job');
+		unset($job->id);
+		unset($job->createdBy);
+		unset($job->created_at);
 		return $this->render('job_detail', ['job' => $job, 'user' => $this->user]);
 	}
 

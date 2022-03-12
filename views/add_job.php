@@ -9,7 +9,7 @@
         <?php  echo $form->field($model, 'addereas') ?>
         <?php  echo $form->field($model, 'description') ?>
 
-        <button type="submit" class="btn btn-primary">submit</button>
+        <button type="submit" class="u-align-center u-border-none u-btn u-btn-round u-button-style u-palette-1-dark-1 u-radius-10 u-text-black u-btn-1">submit</button>
  
  <?php \app\core\form\Form::end() ?>
 

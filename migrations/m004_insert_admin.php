@@ -5,7 +5,7 @@ use app\core\Application;
 $dotenv = Dotenv\Dotenv::createImmutable(dirname(__DIR__));
 $dotenv->load();
 
-class m005_insert_admin {
+class m004_insert_admin {
     public function up()
     {
         $username = $_ENV['Name'];

@@ -44,9 +44,7 @@ class AuthController extends controller
 
 	public function addInstructor(Request $request, Response $response)
 	{
-		// if ($this->user->role > 2){
-		// 	$response->redirect('/dashboard');
-		// }
+
 		return $this->addUser($request, $response, 3, 'members');
 	}
 	public function updateUser(Request $request, Response $response)

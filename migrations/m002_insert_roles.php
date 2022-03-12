@@ -2,7 +2,7 @@
 
 use app\core\Application;
 
-class m004_insert_roles {
+class m002_insert_roles {
     public function up()
     {
         $db = Application::$app->db;

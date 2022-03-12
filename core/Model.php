@@ -11,6 +11,8 @@ abstract class Model
 	public const RULE_MIN = 'min';
 	public const RULE_MAX = 'max';
 	public const RULE_MATCH = 'match';
+	public const RULE_UNIQUE = 'unique';
+	public const RULE_NUMERIC = 'numeric';
 
 
 	public function loadData($data)
@@ -59,12 +61,15 @@ abstract class Model
 				{
 					$this->addError($attribute, self::RULE_MATCH, ['match' => $rule['match']]);	
 				}
+				if ($ruleName === self::RULE_NUMERIC && ctype_digit($value)){
+					$this->addError($attribute, self::RULE_NUMERIC, ['field' => $this->getLabel($attribute)]);
+				}
+				
 			}
 		}
 
 		return empty($this->errors);		
 	}
-
 	public function addError(string $attribute, string $rule, $params = []){
 
 		$message = $this->errorMessages()[$rule] ?? '';
@@ -81,6 +86,8 @@ abstract class Model
 			self::RULE_MIN => 'Min length of this filed must be {min}',
 			self::RULE_MAX => 'Max length of this filed must be {max}',
 			self::RULE_MATCH => 'This filed must be the same as {match}',
+			self::RULE_UNIQUE => 'Record with this {field} already exist',
+			self::RULE_NUMERIC => '{field} cannot be entirlly numeric.',
 		];
 	}
 

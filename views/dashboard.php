@@ -9,9 +9,9 @@
 
 
 	<?php if ($user->role == 3) { ?>
-	<a class="btn" href="/jobs">Apply For Job</a>
+	<a class="u-align-center u-border-none u-btn u-btn-round u-button-style u-palette-1-dark-1 u-radius-10 u-text-black u-btn-1"  href="/jobs">Apply For Job</a>
 	<?php }else {?>
-	<a class="btn" href="/jobs/add">Create Job</a>				
+	<a class="u-align-center u-border-none u-btn u-btn-round u-button-style u-palette-1-dark-1 u-radius-10 u-text-black u-btn-1"  href="/jobs/add">Create Job</a>				
 	<?php } ?>
 
 	</div>

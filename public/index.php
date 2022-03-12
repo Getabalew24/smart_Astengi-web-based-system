@@ -5,6 +5,7 @@ use app\controllers\SiteController;
 use app\controllers\AuthController;
 use app\controllers\DashboardController;
 use app\controllers\JobController;
+use app\controllers\ApplyController;
 
 require_once __DIR__.'/../vendor/autoload.php';
 $dotenv = Dotenv\Dotenv::createImmutable(dirname(__DIR__));
@@ -54,6 +55,8 @@ $app->router->get('/jobs/update', [JobController::class, 'updateJob']);
 $app->router->post('/jobs/update', [JobController::class, 'updateJob']);
 $app->router->get('/jobs/delete', [JobController::class, 'deleteJob']);
 $app->router->post('/jobs/delete', [JobController::class, 'deleteJob']);
+$app->router->post('/Instructor/apply_job',[ApplyController::class, 'Apply_job']);
+$app->router->get('/Instructor/apply_job',[ApplyController::class, 'Apply_job']);
 
 $app->run();
 

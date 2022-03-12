@@ -5,6 +5,7 @@ namespace app\models;
 use app\core\DBModel;
 use app\core\Application;
 use app\core\Model;
+use app\core\Session;
 
 class Job extends DBModel
 {
@@ -16,6 +17,7 @@ class Job extends DBModel
 	public int $Salary = 1;
 	public string $addereas = "";
 	public string $description = " ";
+	public string $createdBy;
 
 	public function tableName(): string
 	{
@@ -24,7 +26,7 @@ class Job extends DBModel
 
 	public function attributes(): array
 	{
-		return ['Name_of_student','gradeLevel', 'No_student','Duration', 'Day_Per_week', 'Salary', 'addereas', 'description'];
+		return ['Name_of_student','gradeLevel', 'No_student','Duration', 'Day_Per_week', 'Salary', 'addereas', 'description', 'createdBy'];
 	}
 
 	public function rules(): array

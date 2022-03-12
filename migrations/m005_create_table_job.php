@@ -2,7 +2,7 @@
 
 use app\core\Application;
 
-class m002_create_table_job {
+class m005_create_table_job {
     public function up()
     {
         $db = Application::$app->db;
@@ -16,6 +16,7 @@ class m002_create_table_job {
                 Salary INT NOT NULL,
                 addereas VARCHAR(255) NOT NULL,
                 description TEXT,
+                createdBy INT,
                 created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
             )  ENGINE=INNODB;";
         $db->pdo->exec($SQL);
